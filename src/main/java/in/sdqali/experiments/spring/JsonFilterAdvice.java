@@ -19,7 +19,7 @@ public class JsonFilterAdvice implements ResponseBodyAdvice<List> {
     @Override
     public boolean supports(MethodParameter returnType, Class<? extends HttpMessageConverter<?>> converterType) {
         List<Annotation> annotations = Arrays.asList(returnType.getMethodAnnotations());
-        return annotations.stream().anyMatch(annotation -> annotation.annotationType().equals(FilterJsonBy.class));
+        return annotations.stream().anyMatch(annotation -> annotation.annotationType().equals(JsonFilter.class));
     }
 
     @Override
@@ -28,7 +28,7 @@ public class JsonFilterAdvice implements ResponseBodyAdvice<List> {
         List<Map<String, Object>> values = (List<Map<String, Object>>) body;
 
         // Identify keys we are interested in.
-        FilterJsonBy annotation = returnType.getMethodAnnotation(FilterJsonBy.class);
+        JsonFilter annotation = returnType.getMethodAnnotation(JsonFilter.class);
         List<String> possibleFilters = Arrays.asList(annotation.keys());
 
         HttpServletRequest servletRequest = ((ServletServerHttpRequest) request).getServletRequest();

@@ -14,7 +14,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 @RestController
 public class ReposController {
     @RequestMapping(path = "/repos", method = GET)
-    @FilterJsonBy(keys = {"fork", "language"})
+    @JsonFilter(keys = {"fork", "language"})
     public List repos() throws URISyntaxException, IOException {
         URL url = this.getClass().getClassLoader().getResource("repos.json").toURI().toURL();
 
