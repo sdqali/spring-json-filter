@@ -23,3 +23,5 @@ This is a sample implementation of filtering JSON responses at the web layer in 
     ...
 ]
 ```
+
+For a detailed explanation, see [my blog post](http://sdqali.in/blog/2016/06/08/filtering-responses-in-spring-mvc/).
